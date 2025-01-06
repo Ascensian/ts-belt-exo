@@ -2,7 +2,7 @@ import { pipe, A } from "@mobily/ts-belt";
 import { Product } from "./type";
 
 
-export const calculateTotalPrice = (products: Product[], filterFn: (product: Product) => boolean): number => {
+export const ArrayFn26 = (products: Product[], filterFn: (product: Product) => boolean): number => {
     return pipe(
         products,
         A.filter(filterFn),

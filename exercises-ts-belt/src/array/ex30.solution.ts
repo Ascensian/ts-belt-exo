@@ -1,7 +1,7 @@
 import { pipe, A } from "@mobily/ts-belt";
 import { Product } from "./type";
 
-export const applyDiscount = (
+export const ArrayFn30 = (
     products: Product[],
     discountCriteria: (product: Product) => boolean,
     discountPercentage: number

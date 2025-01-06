@@ -1,7 +1,7 @@
 import { pipe, A } from "@mobily/ts-belt";
 import { Product } from "./type";
 
-export const filterProducts = (
+export const ArrayFn27 = (
     products: Product[],
     conditions: Array<(product: Product) => boolean>
 ): Product[] => {

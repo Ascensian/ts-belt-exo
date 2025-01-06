@@ -1,6 +1,7 @@
 import { finalArrayExo2 } from "./array/ex2.solution";
 import { allArrayConcatExo3 } from "./array/ex3.solution";
 import { findDuplicatesExo4 } from "./array/ex4.solution";
+import { ArrayFn5 } from "./array/ex5.solution";
 import { ArrayFn6Exo6 } from "./array/ex6.solution";
 import { ArrayFn7Exo7 } from "./array/ex7.solution";
 import { ArrayFn11Exo11 } from "./array/ex11.solution";
@@ -12,10 +13,17 @@ import { ArrayFn19Exo19 } from "./array/ex19.solution";
 import { ArrayFn20Exo20 } from "./array/ex20.solution";
 import { ArrayFn22Exo22 } from "./array/ex22.solution";
 import { ArrayFn23Exo23 } from "./array/ex23.solution";
-import { calculateTotalPrice } from "./array/ex26.solution";
-import { filterProducts } from "./array/ex27.solution";
-import { accumulateData } from "./array/ex28.solution";
-import { applyDiscount } from "./array/ex30.solution";
+import { ArrayFn26 } from "./array/ex26.solution";
+import { ArrayFn27 } from "./array/ex27.solution";
+import { ArrayFn28 } from "./array/ex28.solution";
+import { ArrayFn30 } from "./array/ex30.solution";
+import { createCounter } from "./closure/ex1.solution";
+import { DictFn1 } from "./dict/ex1.solution";
+import { DictFn3 } from "./dict/ex3.solution";
+import { DictFn4 } from "./dict/ex4.solution";
+import { functionFn1 } from "./function/ex1.solution";
+import { functionFn2 } from "./function/ex2.solution";
+import { resultFn1 } from "./result/ex1.solution";
 import { Product, ProductExo22, ProductExo28 } from "./array/type";
 
 // ARRAY 
@@ -61,6 +69,20 @@ const inventoryExo4_2: Product[] = [
 
 const duplicatesExo4 = findDuplicatesExo4(inventoryExo4_1, inventoryExo4_2);
 console.log("Duplicates (Exo4):", duplicatesExo4);
+
+// exo 5
+
+const productsExo5: Product[] = [
+    { name: 'Laptop', price: 1000, inStock: true },
+    { name: 'Mouse', price: 25, inStock: false },
+    { name: 'Keyboard', price: 75, inStock: true },
+    { name: 'Monitor', price: 200, inStock: true },
+];
+
+const resultExo5 = ArrayFn5(productsExo5);
+console.log("Dropped First Product (Exo5):", resultExo5.droppedFirst);
+console.log("Dropped Exactly Two Products (Exo5):", resultExo5.droppedTwo);
+console.log("Dropped While In Stock (Exo5):", resultExo5.droppedWhileInStock);
 
 // exo 6
 
@@ -209,7 +231,7 @@ const productsExo26: Product[] = [
 
 const filterInStock = (product: Product) => product.inStock;
 
-const totalPriceInStock = calculateTotalPrice(productsExo26, filterInStock);
+const totalPriceInStock = ArrayFn26(productsExo26, filterInStock);
 console.log("Total price of in-stock products:", totalPriceInStock);
 
 
@@ -226,7 +248,7 @@ const conditionsExo27 = [
     (product: Product) => product.inStock,
 ];
 
-const filteredProducts = filterProducts(productsExo27, conditionsExo27);
+const filteredProducts = ArrayFn27(productsExo27, conditionsExo27);
 console.log("Filtered Products (Exo27):", filteredProducts);
 
 // exo 28
@@ -239,8 +261,8 @@ const productsExo28: ProductExo28[] = [
 
 const accumulateTotalQuantity = (acc: number, product: ProductExo28) => acc + product.quantity;
 
-const totalQuantity = accumulateData(productsExo28, accumulateTotalQuantity, 0);
-console.log("Total Quantity (Exo28):", totalQuantity);
+const totalQuantity = ArrayFn28(productsExo28, accumulateTotalQuantity, 0);
+console.log("Total Quantity (Exo28):", totalQuantity, "\n");
 
 // exo 30
 
@@ -251,6 +273,64 @@ const productsExo30: Product[] = [
 ];
 
 const discountCriteria = (product: Product) => product.price > 100;
-const totalAfterDiscount = applyDiscount(productsExo30, discountCriteria, 10);
+const totalAfterDiscount = ArrayFn30(productsExo30, discountCriteria, 10);
 
-console.log("Total After Discount (Exo30):", totalAfterDiscount);
+console.log("Total After Discount (Exo30):", totalAfterDiscount, "\n");
+
+// CLOSURE
+
+const counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+console.log(counter()); // 3
+
+// DICT
+
+// exo 1
+
+const objExo1 = { name: "Laptop", price: 1000, stock: true };
+const updatedObj = DictFn1(objExo1, "price");
+
+console.log("Objet après suppression de la clé 'price' (Exo1):", updatedObj, "\n");
+
+// exo 3
+
+const obExo3 = { name: 'Laptop', price: 1000, stock: true, category: 'Electronics' };
+const numberPropertiesObj = DictFn3(obExo3);
+
+console.log("Objet avec les propriétés numériques (Exo3):", numberPropertiesObj, "\n");
+
+// exo 4
+
+const objExo4 = { price: 1000, stock: true, brand: 'Dell', processor: 'Intel' };
+const filteredObjExo4 = DictFn4(objExo4, 'p');
+
+console.log("Objet filtré (Exo4):", filteredObjExo4, "\n");
+
+// FUNCTION 
+
+// exo 1
+
+const resultFuncExo1 = functionFn1(5);
+console.log("Retour de la fonction:", resultFuncExo1); // Affichera 5
+
+// exo 2
+
+const number = 12;
+const predicates = [
+    (n: number) => n > 10,
+    (n: number) => n % 2 === 0,
+];
+
+console.log(functionFn2(number, predicates));
+
+// RESULT
+
+const riskyFunction = () => {
+    if (Math.random() > 0.5) {
+        return 100;
+    }
+    throw new Error('Erreur');
+};
+
+resultFn1(riskyFunction);

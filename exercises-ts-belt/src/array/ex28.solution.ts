@@ -1,7 +1,7 @@
 import { pipe, A } from "@mobily/ts-belt";
 
 
-export const accumulateData = <T, R>(
+export const ArrayFn28 = <T, R>(
     products: T[],
     reducer: (acc: R, product: T) => R,
     initialValue: R

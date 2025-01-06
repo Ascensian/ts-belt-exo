@@ -1,0 +1,1 @@
+export const functionFn1 = <T>(value: T): T => value;
