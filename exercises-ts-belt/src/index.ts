@@ -25,8 +25,26 @@ import { functionFn1 } from "./function/ex1.solution";
 import { functionFn2 } from "./function/ex2.solution";
 import { resultFn1 } from "./result/ex1.solution";
 import { Product, ProductExo22, ProductExo28 } from "./array/type";
+import { areAllAdults } from "./toolbox/every/ex1.solution";
+import { filterEvenNumbers } from "./toolbox/filter/ex1.solution";
+import { convertToKilometers } from "./toolbox/map/ex1.solution";
+import { sumNumbers } from "./toolbox/reduce/ex1.solution";
+import { hasEvenNumber } from "./toolbox/some/ex1.solution";
+import { getInStockProducts } from "./array/ex1.solution";
 
 // ARRAY 
+
+// exo 1
+
+const productsExo1: Product[] = [
+    { name: 'Laptop', price: 1000, inStock: true },
+    { name: 'Mouse', price: 25, inStock: false },
+    { name: 'Keyboard', price: 75, inStock: true },
+];
+
+const inStock = getInStockProducts(productsExo1);
+console.log("Array (Exo1):", inStock);
+
 
 // exo 2
 
@@ -280,9 +298,10 @@ console.log("Total After Discount (Exo30):", totalAfterDiscount, "\n");
 // CLOSURE
 
 const counter = createCounter();
-console.log(counter()); // 1
-console.log(counter()); // 2
-console.log(counter()); // 3
+console.log("Closure (Exo1):", counter()); // 1
+console.log("Closure (Exo1):", counter()); // 2
+console.log("Closure (Exo1):", counter()); // 3
+
 
 // DICT
 
@@ -312,7 +331,7 @@ console.log("Objet filtré (Exo4):", filteredObjExo4, "\n");
 // exo 1
 
 const resultFuncExo1 = functionFn1(5);
-console.log("Retour de la fonction:", resultFuncExo1); // Affichera 5
+console.log("Retour de la fonction (Exo1):", resultFuncExo1); // Affichera 5
 
 // exo 2
 
@@ -322,7 +341,7 @@ const predicates = [
     (n: number) => n % 2 === 0,
 ];
 
-console.log(functionFn2(number, predicates));
+console.log("Retour de la fonction (Exo2):", functionFn2(number, predicates));
 
 // RESULT
 
@@ -333,4 +352,46 @@ const riskyFunction = () => {
     throw new Error('Erreur');
 };
 
-resultFn1(riskyFunction);
+console.log("Result (Exo1):", resultFn1(riskyFunction));
+
+// TOOLBOX
+
+// EVERY 
+
+// exo 1
+
+const people = [
+    { name: 'Alice', age: 19 },
+    { name: 'Bob', age: 25 },
+    { name: 'Charlie', age: 16 },
+];
+
+console.log("Every (Exo1):", areAllAdults(people));
+
+// FILTER
+
+// exo 1
+
+const numbersFilter = [1, 2, 3, 4, 5] as const;
+console.log("Filter (Exo1):", filterEvenNumbers(numbersFilter));
+
+// MAP
+
+// exo 1
+
+const distancesInMiles = [1, 5, 10, 50, 100] as const;
+console.log("Map (Exo1):", convertToKilometers(distancesInMiles));
+
+// REDUCE
+
+// exo 1
+
+const numbers = [1, 2, 3, 4, 5] as const;
+console.log("Reduce (Exo1):", sumNumbers(numbers));
+
+// SOME
+
+// exo 1
+
+const numbers2 = [1, 3, 5, 7, 8] as const;
+console.log("Some (Exo1):", hasEvenNumber(numbers2));

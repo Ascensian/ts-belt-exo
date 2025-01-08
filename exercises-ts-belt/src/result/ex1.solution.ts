@@ -9,5 +9,5 @@ export const resultFn1 = (riskyFunction: () => number) => {
         (error) => `Erreur: ${error.message}`
     );
 
-    console.log(finalResult);
+    return finalResult;
 };
